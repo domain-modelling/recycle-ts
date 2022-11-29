@@ -19,15 +19,13 @@ describe("E2E happy flow", () => {
     });
 
     it("GET /validate returns an empty object", async () => {
-        await expect(get("/validate")).resolves.toEqual({});
+        const validate = await get("/validate");
+        expect(validate).toEqual({});
     });
 
-    it("POST /calculate returns calculation", async () => {
-        const data = {
-            events: [],
-            command: {}
-        };
-        await expect(post("/calculate", data)).resolves.toEqual({
+    it("POST /calculate returns a calculation", async () => {
+        const calculation = await post("/calculate", {events: [], command: {}});
+        expect(calculation).toEqual({
             priceWasCalculated: {
                 id: 1,
                 price: {
@@ -38,16 +36,14 @@ describe("E2E happy flow", () => {
         });
     });
 
-    const get = (url: string) =>
-        client
-            .get(url)
-            .then((response) => response.data)
-            .catch((e) => e.response);
+    const get = async (url: string) => {
+        const result = await client.get(url);
+        return await result.data
+    };
 
-    const post = (url: string, data: any = {}) =>
-        client
-            .post(url, data)
-            .then((response) => response.data)
-            .catch((e) => e.response);
+    const post = async (url: string, data: any = {}) => {
+        const result = await client.post(url, data);
+        return await result.data
+    };
 
 });
