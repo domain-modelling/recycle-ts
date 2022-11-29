@@ -1,0 +1,1 @@
+gh codespace ports visibility 8001:public -c $CODESPACE_NAME

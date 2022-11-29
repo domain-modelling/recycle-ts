@@ -1,0 +1,26 @@
+{
+  "name": "Node.js & TypeScript",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:18-bullseye",
+  "features": {
+    "github-cli": "latest"
+  },
+  "forwardPorts": [
+    8001
+  ],
+  "portsAttributes": {
+    "8001": {
+      "label": "public api"
+    }
+  },
+  "postCreateCommand": "npm install",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "postAttachCommand": "/bin/bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  }
+}
