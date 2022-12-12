@@ -24,15 +24,15 @@ describe("E2E happy flow", () => {
     });
 
     it("POST /calculate returns a calculation", async () => {
-        const calculation = await post("/calculate", {events: [], command: {}});
-        expect(calculation).toEqual({
-            priceWasCalculated: {
-                id: 1,
-                price: {
-                    amount: 0,
-                    currency: "euro"
-                }
-            }
+        const event = await post("/handle-command", {events: [], command: {}});
+        expect(event).toMatchObject({
+            event_id: "foo",
+            type: "PriceWasCalculated",
+            payload: {
+                person_id: "Tom",
+                price_amount: 15.9,
+                price_currency: "EUR",
+            },
         });
     });
 
