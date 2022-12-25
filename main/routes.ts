@@ -17,7 +17,7 @@ routes.post("/handle-command", (request, response, next) => {
         type: "PriceWasCalculated",
         payload: {
             person_id: "Tom",
-            price_amount: 15.9,
+            price_amount: 0,
             price_currency: "EUR",
         },
     });
