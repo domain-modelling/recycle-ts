@@ -10,8 +10,7 @@ routes.get("/validate", (request, response, next) => {
 
 routes.post("/handle-command", (request, response, next) => {
     const {events, command} = request.body
-    console.log({events, command})
-    return response.json({
+    let answer = {
         event_id: "foo",
         created_at: new Date().toISOString(),
         type: "PriceWasCalculated",
@@ -20,7 +19,9 @@ routes.post("/handle-command", (request, response, next) => {
             price_amount: 0,
             price_currency: "EUR",
         },
-    });
+    };
+    console.log({events, command, answer})
+    return response.json(answer);
 });
 
 export {routes}
