@@ -9,18 +9,17 @@ routes.get("/validate", (request, response, next) => {
 });
 
 routes.post("/handle-command", (request, response, next) => {
-    const {history, command} = request.body
+    console.log(JSON.stringify(request.body))
     let answer = {
         event_id: "foo",
         created_at: new Date().toISOString(),
         type: "PriceWasCalculated",
         payload: {
-            card_id: "123",
+            card_id: '321',
             price_amount: 0,
             price_currency: "EUR",
         },
     };
-    console.log({history, command, answer})
     return response.json(answer);
 });
 

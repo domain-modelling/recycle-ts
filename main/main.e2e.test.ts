@@ -23,17 +23,22 @@ describe("E2E happy flow", () => {
         expect(validate).toEqual({});
     });
 
-    it("POST /calculate returns a calculation", async () => {
-        const event = await post("/handle-command", {history: [], command: {}});
-        expect(event).toMatchObject({
+    it("POST /calculate without history", async () => {
+        const event = await post("/handle-command", {history: [], command: calculatePrice('123')});
+        expect(event).toMatchObject(priceWasCalculated('123', 0.0));
+    });
+
+    function priceWasCalculated(card_id: string, price_amount: number) {
+        return {
             type: "PriceWasCalculated",
             payload: {
-                card_id: "123",
-                price_amount: 0.0,
+                card_id,
+                price_amount,
                 price_currency: "EUR",
             },
-        });
-    });
+        };
+
+    }
 
     const get = async (url: string) => {
         const result = await client.get(url);
@@ -45,4 +50,12 @@ describe("E2E happy flow", () => {
         return await result.data
     };
 
+    function calculatePrice(card_id: string) {
+        return {
+            command_id: 'TODO',
+            created_at: '2023-02-13T15:09:20.337466Z',
+            payload: {card_id},
+            type: 'CalculatePrice'
+        };
+    }
 });
