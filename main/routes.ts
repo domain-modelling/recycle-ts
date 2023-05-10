@@ -15,8 +15,8 @@ routes.post("/handle-command", (request, response, next) => {
         created_at: new Date().toISOString(),
         type: "PriceWasCalculated",
         payload: {
-            card_id: '321',
-            price_amount: 0,
+            card_id: '123',
+            price_amount: 1,
             price_currency: "EUR",
         },
     };

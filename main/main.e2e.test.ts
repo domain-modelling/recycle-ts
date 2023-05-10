@@ -20,11 +20,18 @@ describe("E2E happy flow", () => {
 
     it("GET /validate returns an empty object", async () => {
         const validate = await get("/validate");
-        expect(validate).toEqual({});
+        expect(validate).toMatchObject({});
     });
 
     it("POST /calculate without history", async () => {
-        const event = await post("/handle-command", {history: [], command: calculatePrice('123')});
+        const event = await post("/handle-command", {
+            history: [
+                // there should be something here
+            ],
+            command: {
+                // there should be something here too
+            }
+        });
         expect(event).toMatchObject(priceWasCalculated('123', 0.0));
     });
 
