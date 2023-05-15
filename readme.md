@@ -4,10 +4,11 @@ This is the javascript client to use when participating in the Domain Modeling h
 
 # Codespaces
 
-Wait until the Codespace is completely started.
-Then go into the `PORTS` tab in the bottom half of your screen. Change the visibility of the public api port from Private to Visible
+1. Wait until the Codespace is completely started.
+1. Run `npm start` in the terminal.
+1. Go into the `PORTS` tab in the bottom half of your screen. Change the visibility of the public api port from Private to Visible
 (Right click -> Port Visibility -> Public).
-Now you can copy the Local Address and use that in the workshop.
+1. Now you can copy the Local Address and use that in the workshop.
 
 # Getting started
 ## Installing dependencies

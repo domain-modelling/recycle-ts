@@ -4,6 +4,11 @@ import bodyParser from "body-parser";
 const routes = Router();
 routes.use(bodyParser.json());
 
+routes.get("/", (request, response, next) => {
+    return response.json({status: "ok"})
+});
+
+
 routes.get("/validate", (request, response, next) => {
     return response.json({});
 });
