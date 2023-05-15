@@ -2,6 +2,13 @@
 # Recycle Typescript Client
 This is the javascript client to use when participating in the Domain Modeling hands-on.
 
+# Codespaces
+
+Wait until the Codespace is completely started.
+Then go into the `PORTS` tab in the bottom half of your screen. Change the visibility of the public api port from Private to Visible
+(Right click -> Port Visibility -> Public).
+Now you can copy the Local Address and use that in the workshop.
+
 # Getting started
 ## Installing dependencies
 run `npm install` or `yarn`
