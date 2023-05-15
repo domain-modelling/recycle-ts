@@ -5,10 +5,10 @@
     "github-cli": "latest"
   },
   "forwardPorts": [
-    8001
+    8000
   ],
   "portsAttributes": {
-    "8001": {
+    "8000": {
       "label": "public api"
     }
   },
