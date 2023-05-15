@@ -1,6 +1,6 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=595110868)
 # Recycle Typescript Client
-This is the javascript client to use when participating in the Domain Modeling hands-on.
+This is the typescript client to use when participating in the Domain Modeling hands-on.
 
 # Codespaces
 
