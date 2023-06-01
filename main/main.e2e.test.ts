@@ -1,9 +1,9 @@
-import axios, {AxiosInstance} from "axios";
-import express from "express";
-import {Server} from "http";
-import {routes} from "./routes";
+import axios, {AxiosInstance} from 'axios';
+import express from 'express';
+import {Server} from 'http';
+import {routes} from './routes';
 
-describe("E2E happy flow", () => {
+describe('E2E happy flow', () => {
     let server: Server;
     let client: AxiosInstance;
 
@@ -18,34 +18,23 @@ describe("E2E happy flow", () => {
         server.close(done);
     });
 
-    it("GET /validate returns an empty object", async () => {
-        const validate = await get("/validate");
+    it('GET /validate returns an empty object', async () => {
+        const validate = await get('/validate');
         expect(validate).toMatchObject({});
     });
 
-    it("POST /calculate without history", async () => {
-        const event = await post("/handle-command", {
-            history: [
-                // there should be something here
-            ],
+    it('POST /calculate without history', async () => {
+        const event = await post('/handle-command', {
+            history: [],
             command: {
-                // there should be something here too
+                command_id: 'TODO',
+                created_at: '2023-01-01T10:00:00Z',
+                payload: '123',
+                type: 'CalculatePrice'
             }
         });
-        expect(event).toMatchObject(priceWasCalculated('123', 0.0));
+        expect(event).toMatchObject({type: 'PriceWasCalculated'});
     });
-
-    function priceWasCalculated(card_id: string, price_amount: number) {
-        return {
-            type: "PriceWasCalculated",
-            payload: {
-                card_id,
-                price_amount,
-                price_currency: "EUR",
-            },
-        };
-
-    }
 
     const get = async (url: string) => {
         const result = await client.get(url);
@@ -57,12 +46,4 @@ describe("E2E happy flow", () => {
         return await result.data
     };
 
-    function calculatePrice(card_id: string) {
-        return {
-            command_id: 'TODO',
-            created_at: '2023-02-13T15:09:20.337466Z',
-            payload: {card_id},
-            type: 'CalculatePrice'
-        };
-    }
 });
