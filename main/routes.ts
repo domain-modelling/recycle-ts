@@ -7,7 +7,10 @@ const routes = Router();
 routes.use(bodyParser.json());
 
 routes.get('/', (request, response, next) => {
-    return response.json({status: 'ok'})
+    return response.json({
+        status: 'ok',
+        message: 'please enter a public URL to this site on https://domainmodelling.dev, as specified in the readme'
+    });
 });
 
 
@@ -32,7 +35,7 @@ routes.post('/handle-command', (request, response, next) => {
             price_currency: 'EUR',
         },
     };
-    console.log({answer})
+    // console.log({answer})
     return response.json(answer);
 });
 
