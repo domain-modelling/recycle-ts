@@ -15,7 +15,7 @@ routes.get('/', (request, response, next) => {
 
 
 routes.get('/validate', (request, response, next) => {
-    return response.json({});
+    return response.json({status: 'ok'});
 });
 
 routes.post('/handle-command', (request, response, next) => {

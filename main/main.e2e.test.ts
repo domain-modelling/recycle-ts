@@ -18,9 +18,14 @@ describe('E2E happy flow', () => {
         server.close(done);
     });
 
+    it('GET / returns an empty object', async () => {
+        const validate = await get('/');
+        expect(validate).toMatchObject({status: 'ok'});
+    });
+
     it('GET /validate returns an empty object', async () => {
         const validate = await get('/validate');
-        expect(validate).toMatchObject({});
+        expect(validate).toMatchObject({status: 'ok'});
     });
 
     it('POST /calculate without history', async () => {
