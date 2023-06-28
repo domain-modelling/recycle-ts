@@ -9,7 +9,7 @@ import {
 
 export class PriceCalculator {
     constructor(history: EventMessage[]) {
-        history.forEach(this.handle)
+        history.forEach((event) => this.handle(event));
     }
 
     handle(message: EventMessage) {
