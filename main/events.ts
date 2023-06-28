@@ -9,7 +9,7 @@ export interface EventMessage {
 export interface IdCardRegistered {
     card_id: string,
     person_id: string,
-    street: string,
+    city: string,
     address: string
 }
 
